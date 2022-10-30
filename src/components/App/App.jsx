@@ -12,6 +12,7 @@ import Review from '../Review/Review';
 import {useHistory} from 'react-router-dom';
 import Success from '../Success/Success';
 import {useSelector} from 'react-redux';
+import {useState} from 'react';
 
 
 function App() {
@@ -21,7 +22,7 @@ function App() {
   const input = useSelector((store) =>{
     return store.input;
 })
-  
+
 
   /*Finding that I don't need a GET request in the app file on page load
     because we are not loading data from the database on page load? */
@@ -43,6 +44,12 @@ function App() {
         })
         .then((response) => {
            console.log('response.data is', response.data);
+
+           dispatch({
+            type: 'STORE_INPUT', 
+            payload: response.data
+          })
+
         })
           .catch((err) => {
             console.log ('error in GET display feedback', err)
@@ -50,9 +57,27 @@ function App() {
 
     }
 
+          const handleSubmit = (event, input) => {
+            event.preventDefault();
+
+            //Call POST
+            saveFeedback(input);
+
+            //clear input
+            dispatch({
+              type: 'CLEAR_INPUT', 
+              payload: {},
+            })
+            
+
+
+    
+}
+
+
        //Axios POST request to save feedback to the database
 
-       const handleSubmit = (input) => {
+       const saveFeedback = (input) => {
         console.log('in handleSubmit POST function, input is', input);
 
            axios({
@@ -62,10 +87,7 @@ function App() {
            })
            .then((response) => {
              console.log('successfully POSTed feedback, response is', response.data)
-
-              //navigate to success page on submit
-            history.push('/success');
-
+             fetchFeedback();
            })
            .catch((err) => {
              console.log('error in POST feedback', err)
@@ -94,7 +116,7 @@ function App() {
         <Comment />
     </Route>
     <Route exact path = '/review'>
-        <Review handleSubmit ={handleSubmit} />
+        <Review handleSubmit={} ={handleSubmit}  />
     </Route>
     <Route exact path = '/success'>
         <Success/>

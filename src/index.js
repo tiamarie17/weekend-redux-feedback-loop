@@ -8,7 +8,7 @@ import { createStore, combineReducers, applyMiddleware} from 'redux';
 import logger from 'redux-logger';
 
 
-const storeInput = (state = '', action) => {
+const storeInput = (state = {}, action) => {
     
     switch(action.type){
         case 'STORE_INPUT':

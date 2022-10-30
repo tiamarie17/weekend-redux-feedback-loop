@@ -34,11 +34,6 @@ function Review({handleSubmit}) {
 
     console.log('input is', input);
 
-    dispatch({
-        type: 'STORE_INPUT',
-        payload: input,
-    });
-
 
     return (
         <>

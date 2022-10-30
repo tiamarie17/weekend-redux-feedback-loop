@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
 // POST a new feedback on submit
 router.post('/review', (req, res) => {
     
-    sqlParams = req.body;
+    sqlParams = req.body.input;
     console.log('sqlparams is', sqlParams);
 
     const sqlText =
@@ -26,7 +26,7 @@ router.post('/review', (req, res) => {
     
             pool.query(sqlText, sqlParams)
                 .then((dbRes)=>{
-                    console.log('sucessfully posted to database!, dbRes is', dbRes);
+                    console.log('sucessfully posted to database!');
                     res.sendStatus(201);
                 })
                 .catch((err)=>{
