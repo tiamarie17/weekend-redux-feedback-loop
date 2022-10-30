@@ -41,7 +41,7 @@ function App() {
     //Axios POST request to save feedback to the database
 
     const addFeedback = (feedback) => {
-      console.log('in add order POST function')
+         console.log('in add feedback POST function')
       axios({
         method: 'POST', 
         url: '/review',

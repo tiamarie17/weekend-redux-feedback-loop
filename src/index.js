@@ -9,23 +9,28 @@ import logger from 'redux-logger';
 
 
 const storedFeedback = (state = [], action) => {
+    
     switch(action.type){
         case 'DISPLAY_FEEDBACK':
-        return [...state,
-            action.payload];
-       
-        case 'SUMBIT_FEELING':
             return action.payload;
+        case 'CLEAR_FEEDBACK':
+            return {};
+        default: return state;
+    }
+}
+
+const feeling = (state = 0 , action) => {
+    if(action.type === 'STORE_FEELING'){
+        return action.payload;
    }
     return state;
 }
 
 
-
 const storeInstance = createStore(
     combineReducers({
         storedFeedback,
-        //feeling
+        feeling,
         // understanding,
         // support,
         // comment
