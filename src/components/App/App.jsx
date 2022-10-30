@@ -13,15 +13,19 @@ import {useHistory} from 'react-router-dom';
 import Success from '../Success/Success';
 import {useSelector} from 'react-redux';
 import {useState} from 'react';
+import { useDispatch } from 'react-redux';
 
 
 function App() {
 
   const history = useHistory();
 
+  const dispatch = useDispatch();
+
   const input = useSelector((store) =>{
     return store.input;
 })
+
 
 
   /*Finding that I don't need a GET request in the app file on page load
@@ -57,7 +61,7 @@ function App() {
 
     }
 
-          const handleSubmit = (event, input) => {
+          const handleSubmit = (event) => {
             event.preventDefault();
 
             //Call POST
@@ -69,25 +73,21 @@ function App() {
               payload: {},
             })
             
-
-
-    
 }
-
 
        //Axios POST request to save feedback to the database
 
        const saveFeedback = (input) => {
-        console.log('in handleSubmit POST function, input is', input);
+        console.log('in saveFeedback POST function, input is', input);
 
            axios({
              method: 'POST', 
-             url: '/success',
+             url: '/review',
              data: input,
            })
            .then((response) => {
              console.log('successfully POSTed feedback, response is', response.data)
-             fetchFeedback();
+             fetchFeedback(response.data);
            })
            .catch((err) => {
              console.log('error in POST feedback', err)
@@ -116,10 +116,10 @@ function App() {
         <Comment />
     </Route>
     <Route exact path = '/review'>
-        <Review handleSubmit={} ={handleSubmit}  />
+        <Review handleSubmit={handleSubmit}  />
     </Route>
     <Route exact path = '/success'>
-        <Success/>
+        <Success />
     </Route>
     </div>
     </Router>

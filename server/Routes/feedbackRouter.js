@@ -15,14 +15,20 @@ router.get('/', (req, res) => {
 })
 
 // POST a new feedback on submit
-router.post('/review', (req, res) => {
+router.post('/', (req, res) => {
     
-    sqlParams = req.body.input;
-    console.log('sqlparams is', sqlParams);
 
     const sqlText =
         (`INSERT INTO "feedback" ("feeling", "understanding", "support", "comments")
         VALUES ($1, $2, $3, $4)`);
+
+        const sqlParams = [
+             req.body.feeling,
+             req.body.understanding,
+             req.body.support,
+             req.body.comment];
+             
+        console.log('sqlparams is', sqlParams);
     
             pool.query(sqlText, sqlParams)
                 .then((dbRes)=>{
