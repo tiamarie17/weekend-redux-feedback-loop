@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import Feeling from '../Feeling/Feeling';
 import Understanding from '../Understanding/Understanding';
+import Header from '../Header/Header';
 
 
 
@@ -63,14 +64,12 @@ function App() {
     <div className='App'>
 
     <Route exact path = '/'>
-      <header className='App-header'>
-        <h1 className='App-title'>Feedback!</h1>
-        <h4>Don't forget it!</h4>
-      </header>
-    <Feeling />
-      </Route>
+        <Header />
+        <Feeling />
+    </Route>
     <Route exact path = '/understanding'>
-          <Understanding />
+        <Header />
+        <Understanding />
     </Route>
     </div>
     </Router>

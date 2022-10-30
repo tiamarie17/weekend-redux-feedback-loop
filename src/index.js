@@ -8,7 +8,7 @@ import { createStore, combineReducers, applyMiddleware} from 'redux';
 import logger from 'redux-logger';
 
 
-const storedFeedback = (state = [], action) => {
+const storedFeedback = (state = {}, action) => {
     
     switch(action.type){
         case 'DISPLAY_FEEDBACK':
@@ -21,15 +21,22 @@ const storedFeedback = (state = [], action) => {
 
 const feeling = (state = 0 , action) => {
     if(action.type === 'STORE_FEELING'){
-        return action.payload;
+        return Number(action.payload);
    }
     return state;
 }
 
 const understanding = (state = 0 , action) => {
     if(action.type === 'STORE_UNDERSTANDING'){
-        return action.payload;
+        return Number(action.payload);
    }
+    return state;
+}
+
+const support = (state = 0 , action) => {
+    if(action.type === 'STORE_SUPPORT'){
+        return Number(action.payload);
+    }
     return state;
 }
 
@@ -38,8 +45,8 @@ const storeInstance = createStore(
     combineReducers({
         storedFeedback,
         feeling,
-        // understanding,
-        // support,
+        understanding,
+        support,
         // comment
     }),
     applyMiddleware(logger)

@@ -11,15 +11,10 @@ function Feeling() {
     const [feeling, setFeeling] = useState(0)
 
 
-    const storeFeeling= (event) => {
-        console.log('in storeFeeling');
-
-        //setFeeling({feeling: event.target.value})
-    
-        console.log('feeling is,',feeling);
+    const storeFeeling= () => {
+        console.log('in storeFeeling, feeling is' , feeling);
        
-       
-
+       //Sending feeling to the redux store
         dispatch({
             type: 'STORE_FEELING',
             payload: feeling
@@ -40,7 +35,6 @@ function Feeling() {
         min ="1" 
         max = "5"
         onChange = {(event) =>{
-            console.log("On Chnage is being called")
             setFeeling(event.target.value)
         }} 
         />
