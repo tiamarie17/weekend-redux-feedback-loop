@@ -15,7 +15,7 @@ function App() {
     useEffect(() =>{
       fetchFeedback();
     }, [])
-    
+
 
     //Axios GET request for feedback
     const fetchFeedback = () => {
@@ -35,6 +35,24 @@ function App() {
         })
 
     }
+
+    //Axios POST request to save feedback to the database
+
+    const addFeedback = (feedback) => {
+      console.log('in add order POST function')
+      axios({
+        method: 'POST', 
+        url: '/review',
+        data: feedback
+      })
+      .then((response) => {
+        console.log('successfully POSTed feedback, response is', response)
+      })
+      .catch((err) => {
+        console.log('error POSTing new order', err)
+      })
+    }
+
 
   return (
     <div className='App'>
