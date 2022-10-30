@@ -15,20 +15,30 @@ router.get('/', (req, res) => {
 })
 
 // POST a new feedback on submit
-router.post('/review', async (req, res) => {
+router.post('/review', (req, res) => {
     
-    const req.body =  {
-            feeling,
-            understanding,
-            support,
-            comment
-        };
+    let feedback = req.body;
+    console.log(feedback);
+
     const sqlText =
         (`INSERT INTO "feeedback" ("feeling", "understanding", "support", "comment")
         VALUES ($1, $2, $3, $4, $5, $6)`);
 
+        const sqlParams = [req.body.feedback];
+        console.log(sqlParams);
+    
+            pool.query(sqlText, sqlParams)
+                .then((dbRes)=>{
+                    console.log('in POST router');
+                    res.sendStatus(201);
+                })
+                .catch((err)=>{
+                    console.log('POST router failed', err);
+                    res.sendStatus(500);
+                });
+    
+    });
 
-});
 
 
 module.exports = router;
