@@ -7,6 +7,8 @@ import { useDispatch } from 'react-redux';
 import Feeling from '../Feeling/Feeling';
 import Understanding from '../Understanding/Understanding';
 import Header from '../Header/Header';
+import Support from '../Support/Support';
+import Comment from '../Comment/Comment';
 
 
 
@@ -71,8 +73,17 @@ function App() {
         <Header />
         <Understanding />
     </Route>
+    <Route exact path = '/support'>
+        <Header />
+        <Support />
+    </Route>
+    <Route exact path = '/comment'>
+        <Header />
+        <Comment />
+    </Route>
     </div>
     </Router>
+
   );
 }
 
