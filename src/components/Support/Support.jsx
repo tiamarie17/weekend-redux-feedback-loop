@@ -28,17 +28,22 @@ function Support() {
     <>
     <h1>How well are you being supported?</h1>
     
-    <label className = "label">Support?</label>
-    <input 
-        required 
-        type = "number" 
-        min ="1" 
-        max = "5"
-        onChange = {(event) =>{
-            setSupport(event.target.value)
-        }} 
-        />
-    <button type = "submit" onClick ={storeSupport} value = {support}>Next</button>
+    
+    <form onSubmit = {storeSupport}>
+            <label className = "label">Support?</label>
+            <input 
+                required 
+                type = "number" 
+                min ="1" 
+                max = "5"
+                onChange = {(event) =>{
+                    setSupport(event.target.value)
+                
+                }} 
+                value = {support}
+                />
+            <button type = "submit">Next</button>
+    </form>
     </>
     
     );

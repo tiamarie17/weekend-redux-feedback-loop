@@ -26,16 +26,22 @@ function comment() {
     return(
     <>
     <h1>Any comments you want to leave?</h1>
+
+    <form onSubmit = {storeComment}>
+            <label className = "label">Any comments?</label>
+            <input 
+                type = "number" 
+                min ="1" 
+                max = "5"
+                onChange = {(event) =>{
+                    setComment(event.target.value)
+                
+                }} 
+                value = {comment}
+                />
+            <button type = "submit">Next</button>
+    </form>
     
-    
-    <label className = "label">Comments</label>
-    <input 
-        type = "text" 
-        onChange = {(event) =>{
-            setComment(event.target.value)
-        }} 
-        />
-    <button type = "submit" onClick ={storeComment} value = {comment}>Next</button>
     </>
     
     );

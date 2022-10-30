@@ -29,11 +29,10 @@ function Feeling() {
     return(
     <>
     
-            <h1>How are you feeling today?</h1>
+    <h1>How are you feeling today?</h1>
             
-            <label className = "label">Feeling?</label>
-
     <form onSubmit = {storeFeeling}>
+            <label className = "label">Feeling?</label>
             <input 
                 required 
                 type = "number" 

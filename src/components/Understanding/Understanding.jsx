@@ -27,6 +27,8 @@ function Understanding() {
     <h1>How well are you understanding the content?</h1>
     
 
+            
+    <form onSubmit = {storeUnderstanding}>
             <label className = "label">Understanding?</label>
             <input 
                 required 
@@ -35,9 +37,12 @@ function Understanding() {
                 max = "5"
                 onChange = {(event) =>{
                     setUnderstanding(event.target.value)
+                
                 }} 
+                value = {understanding}
                 />
-            <button type = "submit" onClick = {storeUnderstanding} value = {understanding}>Next</button>
+            <button type = "submit">Next</button>
+    </form>
     
     </>
     
