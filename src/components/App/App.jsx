@@ -4,6 +4,8 @@ import './App.css';
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import Feeling from '../Feeling/Feeling';
+
 
 
 
@@ -57,10 +59,14 @@ function App() {
   return (
     <Router>
     <div className='App'>
+
+    <Route exact path = '/'>
       <header className='App-header'>
         <h1 className='App-title'>Feedback!</h1>
         <h4>Don't forget it!</h4>
       </header>
+    <Feeling />
+      </Route>
     </div>
     </Router>
   );

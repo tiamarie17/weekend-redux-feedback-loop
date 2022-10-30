@@ -9,35 +9,26 @@ import logger from 'redux-logger';
 
 
 const storedFeedback = (state = [], action) => {
-    if(action.type === 'DISPLAY_FEEDBACK'){
-
+    switch(action.type){
+        case 'DISPLAY_FEEDBACK':
         return [...state,
             action.payload];
        
+        case 'SUMBIT_FEELING':
+            return action.payload;
    }
     return state;
 }
-
-//const feeling
-
-
-//const understanding
-
-
-//const support
-
-
-//const comment
 
 
 
 const storeInstance = createStore(
     combineReducers({
         storedFeedback,
-        feeling,
-        understanding,
-        support,
-        comment
+        //feeling
+        // understanding,
+        // support,
+        // comment
     }),
     applyMiddleware(logger)
 )
