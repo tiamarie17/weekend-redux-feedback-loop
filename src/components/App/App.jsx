@@ -5,6 +5,8 @@ import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import Feeling from '../Feeling/Feeling';
+import Understanding from '../Understanding/Understanding';
+
 
 
 
@@ -67,6 +69,9 @@ function App() {
       </header>
     <Feeling />
       </Route>
+    <Route exact path = '/understanding'>
+          <Understanding />
+    </Route>
     </div>
     </Router>
   );
