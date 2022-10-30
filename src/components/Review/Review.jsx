@@ -1,17 +1,15 @@
 import {React} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {useHistory} from 'react-router-dom';
 
 
 function Review({handleSubmit}) {
 
-
     const dispatch = useDispatch();
-    const history = useHistory();
+
 
     //Getting feeling, understanding, support, and commment data from the redux store
 
-     const feeling = useSelector((store) => {
+    const feeling = useSelector((store) => {
         return store.feeling;
     })
 
@@ -26,7 +24,21 @@ function Review({handleSubmit}) {
     const comment = useSelector((store) => {
         return store.comment;
     })
-    
+
+    const input = {
+        feeling,
+        understanding,
+        support, 
+        comment,
+    };
+
+    console.log('input is', input);
+
+    dispatch({
+        type: 'STORE_INPUT',
+        payload: input,
+    });
+
 
     return (
         <>
@@ -37,7 +49,7 @@ function Review({handleSubmit}) {
         <h2>Support: {support}</h2>
         <h2>Comments: {comment}</h2>
 
-        <button type = "submit" onClick = {handleSubmit} value>Submit</button>
+        <button type = "submit" onClick = {handleSubmit} input = {input} value>Submit</button>
         </>
     );
 }

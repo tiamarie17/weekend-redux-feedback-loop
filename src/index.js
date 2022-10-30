@@ -8,12 +8,12 @@ import { createStore, combineReducers, applyMiddleware} from 'redux';
 import logger from 'redux-logger';
 
 
-const handleSubmit = (state = {}, action) => {
+const storeInput = (state = '', action) => {
     
     switch(action.type){
-        case 'DISPLAY_FEEDBACK':
+        case 'STORE_INPUT':
             return action.payload;
-        case 'CLEAR_FEEDBACK':
+        case 'CLEAR_INPUT':
             return {};
         default: return state;
     }
@@ -49,7 +49,7 @@ const comment = (state = '', action) => {
 
 const storeInstance = createStore(
     combineReducers({
-        handleSubmit,
+        storeInput,
         feeling,
         understanding,
         support,

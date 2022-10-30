@@ -1,31 +1,40 @@
 import React from 'react';
 import axios from 'axios';
 import './App.css';
-import { HashRouter as Router, Route, Link } from 'react-router-dom';
+import { HashRouter as Router, Route } from 'react-router-dom';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 import Feeling from '../Feeling/Feeling';
 import Understanding from '../Understanding/Understanding';
 import Header from '../Header/Header';
 import Support from '../Support/Support';
 import Comment from '../Comment/Comment';
 import Review from '../Review/Review';
-
-
-
+import {useHistory} from 'react-router-dom';
+import Success from '../Success/Success';
+import {useSelector} from 'react-redux';
 
 
 function App() {
 
-    const dispatch = useDispatch();
+  const history = useHistory();
 
-    //On page load, fetchFeedback
-    useEffect(() =>{
-      fetchFeedback();
-    }, [])
+  const input = useSelector((store) =>{
+    return store.input;
+})
+  
+
+  /*Finding that I don't need a GET request in the app file on page load
+    because we are not loading data from the database on page load? */
+
+  useEffect(()=> {
+    fetchFeedback();
+   }, [])
 
 
-    //Axios GET request for feedback
+   /*Axios GET request for feedback from database
+    Using this to check sample data in database, but I don't think this 
+    is necessary either?*/
+
     const fetchFeedback = () => {
         console.log('in FetchFeedback function');
         axios({
@@ -33,10 +42,7 @@ function App() {
           url: '/review'
         })
         .then((response) => {
-          dispatch ({
-            type: 'DISPLAY_FEEDBACK',
-            payload: response.data
-          })
+           console.log('response.data is', response.data);
         })
           .catch((err) => {
             console.log ('error in GET display feedback', err)
@@ -44,24 +50,29 @@ function App() {
 
     }
 
-    //Axios POST request to save feedback to the database
+       //Axios POST request to save feedback to the database
 
-    const handleSubmit = (feedback) => {
-         console.log('in add feedback POST function')
-      axios({
-        method: 'POST', 
-        url: '/review',
-        data: feedback
-      })
-      .then((response) => {
-        console.log('successfully POSTed feedback, response is', response)
-      })
-      .catch((err) => {
-        console.log('error POSTing new order', err)
-      })
-    }
+       const handleSubmit = (input) => {
+        console.log('in handleSubmit POST function, input is', input);
 
+           axios({
+             method: 'POST', 
+             url: '/success',
+             data: input,
+           })
+           .then((response) => {
+             console.log('successfully POSTed feedback, response is', response.data)
 
+              //navigate to success page on submit
+            history.push('/success');
+
+           })
+           .catch((err) => {
+             console.log('error in POST feedback', err)
+           })
+
+   }
+  
   return (
     <Router>
     <div className='App'>
@@ -83,8 +94,10 @@ function App() {
         <Comment />
     </Route>
     <Route exact path = '/review'>
-         {/* Passing in handleSubmit function to review component */}
-        <Review handleSubmit = {handleSubmit} />
+        <Review handleSubmit ={handleSubmit} />
+    </Route>
+    <Route exact path = '/success'>
+        <Success/>
     </Route>
     </div>
     </Router>

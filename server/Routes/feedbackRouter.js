@@ -17,19 +17,16 @@ router.get('/', (req, res) => {
 // POST a new feedback on submit
 router.post('/review', (req, res) => {
     
-    let feedback = req.body;
-    console.log(feedback);
+    sqlParams = req.body;
+    console.log('sqlparams is', sqlParams);
 
     const sqlText =
-        (`INSERT INTO "feedback" ("feeling", "understanding", "support", "comment")
+        (`INSERT INTO "feedback" ("feeling", "understanding", "support", "comments")
         VALUES ($1, $2, $3, $4)`);
-
-        const sqlParams = [req.body.feedback];
-        console.log(sqlParams);
     
             pool.query(sqlText, sqlParams)
                 .then((dbRes)=>{
-                    console.log('in POST router');
+                    console.log('sucessfully posted to database!, dbRes is', dbRes);
                     res.sendStatus(201);
                 })
                 .catch((err)=>{
