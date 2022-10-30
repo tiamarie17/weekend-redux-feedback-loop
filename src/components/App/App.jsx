@@ -9,6 +9,7 @@ import Understanding from '../Understanding/Understanding';
 import Header from '../Header/Header';
 import Support from '../Support/Support';
 import Comment from '../Comment/Comment';
+import Review from '../Review/Review';
 
 
 
@@ -45,7 +46,7 @@ function App() {
 
     //Axios POST request to save feedback to the database
 
-    const addFeedback = (feedback) => {
+    const handleSubmit = (feedback) => {
          console.log('in add feedback POST function')
       axios({
         method: 'POST', 
@@ -80,6 +81,10 @@ function App() {
     <Route exact path = '/comment'>
         <Header />
         <Comment />
+    </Route>
+    <Route exact path = '/review'>
+         {/* Passing in handleSubmit function to review component */}
+        <Review handleSubmit = {handleSubmit} />
     </Route>
     </div>
     </Router>

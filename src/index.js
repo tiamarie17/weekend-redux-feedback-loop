@@ -47,7 +47,6 @@ const comment = (state = '', action) => {
     return state;
 }
 
-
 const storeInstance = createStore(
     combineReducers({
         handleSubmit,
