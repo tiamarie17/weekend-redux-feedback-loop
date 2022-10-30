@@ -11,7 +11,9 @@ function comment() {
     const [comment, setComment] = useState('');
 
 
-    const storeComment= () => {
+    const storeComment= (event) => {
+        event.preventDefault();
+    
         console.log('in storeComment, comment is' , comment);
        
        //Sending comment to the redux store
@@ -30,9 +32,7 @@ function comment() {
     <form onSubmit = {storeComment}>
             <label className = "label">Any comments?</label>
             <input 
-                type = "number" 
-                min ="1" 
-                max = "5"
+                type = "text" 
                 onChange = {(event) =>{
                     setComment(event.target.value)
                 

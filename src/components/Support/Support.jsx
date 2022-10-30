@@ -8,10 +8,11 @@ function Support() {
     const history = useHistory();
     const dispatch = useDispatch();
 
-    const [support, setSupport] = useState(0)
+    const [support, setSupport] = useState('')
 
 
-    const storeSupport= () => {
+    const storeSupport= (event) => {
+        event.preventDefault();
         console.log('in storeSupport, support is' , support);
        
        //Sending support to the redux store

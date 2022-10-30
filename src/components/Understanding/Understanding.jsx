@@ -7,10 +7,12 @@ function Understanding() {
     const history = useHistory();
     const dispatch = useDispatch();
 
-    const [understanding, setUnderstanding] = useState(0)
+    const [understanding, setUnderstanding] = useState('')
 
 
     const storeUnderstanding= (event) => {
+        event.preventDefault();
+        
         console.log('in storeUnderstanding');
 
         dispatch({
