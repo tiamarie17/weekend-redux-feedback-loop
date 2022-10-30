@@ -21,8 +21,8 @@ router.post('/review', (req, res) => {
     console.log(feedback);
 
     const sqlText =
-        (`INSERT INTO "feeedback" ("feeling", "understanding", "support", "comment")
-        VALUES ($1, $2, $3, $4, $5, $6)`);
+        (`INSERT INTO "feedback" ("feeling", "understanding", "support", "comment")
+        VALUES ($1, $2, $3, $4)`);
 
         const sqlParams = [req.body.feedback];
         console.log(sqlParams);

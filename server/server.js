@@ -10,7 +10,8 @@ app.use(express.static('build'));
 
 /** ---------- EXPRESS ROUTES ---------- **/
 
-
+const feebdackRouter = require('./routes/feedback.router.js');
+app.use('/review', feebdackRouter);
 
 /** ---------- START SERVER ---------- **/
 app.listen(PORT, () => {
