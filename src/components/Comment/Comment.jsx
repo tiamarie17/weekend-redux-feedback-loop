@@ -27,9 +27,9 @@ function comment() {
     <>
     <h1>Any comments you want to leave?</h1>
     
+    
     <label className = "label">Comments</label>
     <input 
-        required 
         type = "text" 
         onChange = {(event) =>{
             setComment(event.target.value)

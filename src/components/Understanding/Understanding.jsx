@@ -26,17 +26,19 @@ function Understanding() {
     <>
     <h1>How well are you understanding the content?</h1>
     
-    <label className = "label">Understanding?</label>
-    <input 
-        required 
-        type = "number" 
-        min ="1" 
-        max = "5"
-        onChange = {(event) =>{
-            setUnderstanding(event.target.value)
-        }} 
-        />
-    <button type = "submit" onClick ={storeUnderstanding} value = {understanding}>Next</button>
+
+            <label className = "label">Understanding?</label>
+            <input 
+                required 
+                type = "number" 
+                min ="1" 
+                max = "5"
+                onChange = {(event) =>{
+                    setUnderstanding(event.target.value)
+                }} 
+                />
+            <button type = "submit" onClick = {storeUnderstanding} value = {understanding}>Next</button>
+    
     </>
     
     );
