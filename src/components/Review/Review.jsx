@@ -1,21 +1,42 @@
 import {React} from 'react';
+import {useHistory} from 'react-router-dom';
+import {useDispatch} from 'react-redux';
 
 
-function Review({handleSubmit, feeling, understanding, support, comment}) {
+function Review({input, saveFeedback}) {
 
+    let history = useHistory();
+    let dispatch =useDispatch();
+
+const handleSubmit = (event) => {
+        event.preventDefault();
+    
+        //Call POST
+        saveFeedback(input);
+    
+        //clear input
+        dispatch({
+          type: 'CLEAR_INPUT', 
+          payload: [],
+        })
+    
+        history.push('/success');
+        
+    }
 
     return (
         <>
         <h1>Review Your Feedback</h1>
 
-        <h2>Feelings: {feeling}</h2>
-        <h2>Understanding: {understanding}</h2>
-        <h2>Support: {support}</h2>
-        <h2>Comments: {comment}</h2>
+        <h2>Feelings: {input.feeling}</h2>
+        <h2>Understanding: {input.understanding}</h2>
+        <h2>Support: {input.support}</h2>
+        <h2>Comments: {input.comment}</h2>
 
-        <button type = "submit" onClick = {handleSubmit} value>Submit</button>
+        <button type = "submit" onClick={handleSubmit} input={input}>Submit</button>
         </>
     );
+    
 }
 
 export default Review;

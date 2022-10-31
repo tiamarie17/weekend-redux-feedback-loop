@@ -8,14 +8,6 @@ import { createStore, combineReducers, applyMiddleware} from 'redux';
 import logger from 'redux-logger';
 
 
-const inputAction = (state = {}, action) => {
-    
-    if(action.type === 'CLEAR_INPUT'){
-        
-            return {};
-    }
-    return state;
-}
 
 const feeling = (state = 0 , action) => {
     if(action.type === 'STORE_FEELING'){
@@ -47,7 +39,6 @@ const comment = (state = '', action) => {
 
 const storeInstance = createStore(
     combineReducers({
-        inputAction,
         feeling,
         understanding,
         support,

@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import './App.css';
-import { HashRouter as Router, Route } from 'react-router-dom';
+import { HashRouter as Router, Route} from 'react-router-dom';
 import { useEffect } from 'react';
 import Feeling from '../Feeling/Feeling';
 import Understanding from '../Understanding/Understanding';
@@ -9,18 +9,11 @@ import Header from '../Header/Header';
 import Support from '../Support/Support';
 import Comment from '../Comment/Comment';
 import Review from '../Review/Review';
-import {useHistory} from 'react-router-dom';
 import Success from '../Success/Success';
 import {useSelector} from 'react-redux';
-import {useState} from 'react';
-import { useDispatch } from 'react-redux';
 
 
 function App() {
-
-  const history = useHistory();
-
-  const dispatch = useDispatch();
 
     //Getting feeling, understanding, support, and commment data from the redux store
 
@@ -50,8 +43,8 @@ function App() {
   console.log('input is', input);
 
 
-  /*Finding that I don't need a GET request in the app file on page load
-    because we are not loading data from the database on page load? */
+  /*Do I need this useEffect here? Didn't feel like it was necessary
+  but I added it anyway */
 
   useEffect(()=> {
     fetchFeedback();
@@ -78,26 +71,11 @@ function App() {
 
     }
 
-          const handleSubmit = (event) => {
-            event.preventDefault();
-
-            //Call POST
-            saveFeedback(input);
-
-            //clear input
-            dispatch({
-              type: 'CLEAR_INPUT', 
-              payload: {},
-            })
-
-            history.push('/success');
-            
-}
 
        //Axios POST request to save feedback to the database
 
        const saveFeedback = (input) => {
-        console.log('in saveFeedback POST function, input is', input);
+          console.log('in saveFeedback POST function, input is', input);
 
            axios({
              method: 'POST', 
@@ -135,8 +113,7 @@ function App() {
         <Comment />
     </Route>
     <Route exact path = '/review'>
-        <Review handleSubmit={handleSubmit} feeling = {feeling} 
-                 comment = {comment} support={support} understanding={understanding} />
+        <Review saveFeedback={saveFeedback} input={input} />
     </Route>
     <Route exact path = '/success'>
         <Success />
