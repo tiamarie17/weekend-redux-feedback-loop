@@ -22,10 +22,32 @@ function App() {
 
   const dispatch = useDispatch();
 
-  const input = useSelector((store) =>{
-    return store.input;
-})
+    //Getting feeling, understanding, support, and commment data from the redux store
 
+  const feeling = useSelector((store) => {
+      return store.feeling;
+  })
+
+  const understanding = useSelector((store) => {
+      return store.understanding;
+  })
+
+  const support = useSelector((store) => {
+      return store.support;
+  })
+
+  const comment = useSelector((store) => {
+      return store.comment;
+  })
+
+  const input = {
+      feeling,
+      understanding,
+      support, 
+      comment,
+  };
+
+  console.log('input is', input);
 
 
   /*Finding that I don't need a GET request in the app file on page load
@@ -49,11 +71,6 @@ function App() {
         .then((response) => {
            console.log('response.data is', response.data);
 
-           dispatch({
-            type: 'STORE_INPUT', 
-            payload: response.data
-          })
-
         })
           .catch((err) => {
             console.log ('error in GET display feedback', err)
@@ -72,6 +89,8 @@ function App() {
               type: 'CLEAR_INPUT', 
               payload: {},
             })
+
+            history.push('/success');
             
 }
 
@@ -116,7 +135,8 @@ function App() {
         <Comment />
     </Route>
     <Route exact path = '/review'>
-        <Review handleSubmit={handleSubmit}  />
+        <Review handleSubmit={handleSubmit} feeling = {feeling} 
+                 comment = {comment} support={support} understanding={understanding} />
     </Route>
     <Route exact path = '/success'>
         <Success />

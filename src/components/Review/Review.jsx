@@ -1,38 +1,7 @@
 import {React} from 'react';
-import {useSelector, useDispatch} from 'react-redux';
 
 
-function Review({handleSubmit}) {
-
-    const dispatch = useDispatch();
-
-
-    //Getting feeling, understanding, support, and commment data from the redux store
-
-    const feeling = useSelector((store) => {
-        return store.feeling;
-    })
-
-    const understanding = useSelector((store) => {
-        return store.understanding;
-    })
-
-    const support = useSelector((store) => {
-        return store.support;
-    })
-
-    const comment = useSelector((store) => {
-        return store.comment;
-    })
-
-    const input = {
-        feeling,
-        understanding,
-        support, 
-        comment,
-    };
-
-    console.log('input is', input);
+function Review({handleSubmit, feeling, understanding, support, comment}) {
 
 
     return (
@@ -44,7 +13,7 @@ function Review({handleSubmit}) {
         <h2>Support: {support}</h2>
         <h2>Comments: {comment}</h2>
 
-        <button type = "submit" onClick = {handleSubmit} input = {input} value>Submit</button>
+        <button type = "submit" onClick = {handleSubmit} value>Submit</button>
         </>
     );
 }

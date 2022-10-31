@@ -16,6 +16,7 @@ router.get('/', (req, res) => {
 
 // POST a new feedback on submit
 router.post('/', (req, res) => {
+    console.log('req.body is', req.body);
     
 
     const sqlText =
