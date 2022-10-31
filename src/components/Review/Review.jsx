@@ -14,12 +14,6 @@ const handleSubmit = (event) => {
         //Call POST
         saveFeedback(input);
     
-        //clear input
-        dispatch({
-          type: 'CLEAR_INPUT', 
-          payload: [],
-        })
-    
         history.push('/success');
         
     }

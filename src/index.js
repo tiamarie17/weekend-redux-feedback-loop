@@ -10,29 +10,42 @@ import logger from 'redux-logger';
 
 
 const feeling = (state = 0 , action) => {
-    if(action.type === 'STORE_FEELING'){
-        return Number(action.payload);
+    switch(action.type){
+        case 'STORE_FEELING':
+            return Number(action.payload);
+        case 'CLEAR_FEELING':
+            return '';
    }
     return state;
 }
 
 const understanding = (state = 0 , action) => {
-    if(action.type === 'STORE_UNDERSTANDING'){
-        return Number(action.payload);
+    switch(action.type){
+        case 'STORE_UNDERSTANDING':
+            return Number(action.payload);
+        case 'CLEAR_UNDERSTANDING':
+            return '';
+    
    }
     return state;
 }
 
 const support = (state = 0 , action) => {
-    if(action.type === 'STORE_SUPPORT'){
-        return Number(action.payload);
+    switch(action.type){
+        case 'STORE_SUPPORT':
+            return Number(action.payload);
+        case 'CLEAR_SUPPORT':
+            return '';
     }
     return state;
 }
 
 const comment = (state = '', action) => {
-    if(action.type === 'STORE_COMMENT'){
-        return (action.payload);
+    switch(action.type){
+        case 'STORE_COMMENT':
+            return action.payload;
+        case 'CLEAR_COMMENT':
+            return '';
     }
     return state;
 }
