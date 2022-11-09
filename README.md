@@ -1,9 +1,17 @@
 # Project Name
 
-[Project Instructions](./INSTRUCTIONS.md), this line may be removed once you have updated the README.md
+Reflection Survey Redux App
+
+## Technologies Used
+
+JavaScript
+React
+Redux
+HTML
+CSS
+Material Design
+Node.js
 
 ## Description
 
-Your project description goes here. What problem did you solve? How did you solve it?
 
-Additional README details can be found [here](https://github.com/PrimeAcademy/readme-template/blob/master/README.md).
