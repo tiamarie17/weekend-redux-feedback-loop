@@ -31,9 +31,9 @@ function comment() {
     <h1>Any comments you want to leave?</h1>
 
     <form onSubmit = {storeComment}>
-            <label className = "label">Any comments?</label>
             <input 
                 type = "text" 
+                placeholder="comments"
                 onChange = {(event) =>{
                     setComment(event.target.value)
                 

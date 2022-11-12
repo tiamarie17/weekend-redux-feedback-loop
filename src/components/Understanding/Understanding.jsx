@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import {useState} from 'react';
+import Button from '@mui/material/Button';
 
 function Understanding() {
 
@@ -49,7 +50,7 @@ function Understanding() {
                 }} 
                 value = {understanding}
                 />
-            <button type = "submit" onClick={storeUnderstanding}>Next</button>
+            <Button variant="outlined" type = "submit" onClick={storeUnderstanding}>Next</Button>
             {/* <button type="submit" onClick={backToFeeling}>Back</button> */}
     </form>
     

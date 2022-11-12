@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import {useState} from 'react';
+import Button from '@mui/material/Button';
 
 
 function Support() {
@@ -43,7 +44,7 @@ function Support() {
                 }} 
                 value = {support}
                 />
-            <button type = "submit">Next</button>
+            <Button variant="contained" type = "submit">Next</Button>
     </form>
     </>
     

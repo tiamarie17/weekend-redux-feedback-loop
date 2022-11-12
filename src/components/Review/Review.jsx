@@ -1,6 +1,7 @@
 import {React} from 'react';
 import {useHistory} from 'react-router-dom';
 import {useDispatch} from 'react-redux';
+import Button from '@mui/material/Button';
 
 
 function Review({input, saveFeedback}) {
@@ -27,7 +28,7 @@ const handleSubmit = (event) => {
         <h2>Support: {input.support}</h2>
         <h2>Comments: {input.comment}</h2>
 
-        <button type = "submit" onClick={handleSubmit} input={input}>Submit</button>
+        <Button variant="outlined" type = "submit" onClick={handleSubmit} input={input}>Submit</Button>
         </>
     );
     
