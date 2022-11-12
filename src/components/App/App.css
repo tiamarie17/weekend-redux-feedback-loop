@@ -21,3 +21,11 @@
 h4 {
   font-style: italic;
 }
+
+input {
+  height: 31px;
+  border-color: lightblue;
+  border-radius: 4px;
+  margin-left: 5px;
+  margin-right: 5px;
+}

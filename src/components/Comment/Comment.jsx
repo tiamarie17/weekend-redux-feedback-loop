@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import {useState} from 'react';
+import Button from '@mui/material/Button';
 
 
 function comment() {
@@ -39,7 +40,7 @@ function comment() {
                 }} 
                 value = {comment}
                 />
-            <button type = "submit">Next</button>
+            <Button type = "submit" variant="outlined">Next</Button>
     </form>
     
     </>

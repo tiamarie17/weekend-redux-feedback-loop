@@ -24,18 +24,17 @@ function Understanding() {
         history.push('/support');
     }
 
-    const backToFeeling = (event) => {
-        event.preventDefault();
-        console.log('in backToFeeling');
+    // const backToFeeling = (event) => {
+    //     event.preventDefault();
+    //     console.log('in backToFeeling');
 
-        history.push('/');
-    }
+    //     history.push('/');
+    // }
 
     return(
     <>
     <h1>How well are you understanding the content?</h1>
     
-
             
     <form onSubmit = {storeUnderstanding}>
             <label className = "label">Understanding?</label>
@@ -51,7 +50,7 @@ function Understanding() {
                 value = {understanding}
                 />
             <button type = "submit" onClick={storeUnderstanding}>Next</button>
-            <button type="submit" onClick={backToFeeling}>Back</button>
+            {/* <button type="submit" onClick={backToFeeling}>Back</button> */}
     </form>
     
     </>

@@ -43,33 +43,29 @@ function App() {
   console.log('input is', input);
 
 
-  /*Do I need this useEffect here? Didn't feel like it was necessary
-  but I added it anyway */
-
-  useEffect(()=> {
-    fetchFeedback();
-   }, [])
 
 
-   /*Axios GET request for feedback from database
-    Using this to check sample data in database, but I don't think this 
-    is necessary either?*/
+  // useEffect(()=> {
+  //   fetchFeedback();
+  //  }, [])
 
-    const fetchFeedback = () => {
-        console.log('in FetchFeedback function');
-        axios({
-          method: 'GET', 
-          url: '/review'
-        })
-        .then((response) => {
-           console.log('response.data is', response.data);
 
-        })
-          .catch((err) => {
-            console.log ('error in GET display feedback', err)
-        })
 
-    }
+  //   const fetchFeedback = () => {
+  //       console.log('in FetchFeedback function');
+  //       axios({
+  //         method: 'GET', 
+  //         url: '/review'
+  //       })
+  //       .then((response) => {
+  //          console.log('response.data is', response.data);
+
+  //       })
+  //         .catch((err) => {
+  //           console.log ('error in GET display feedback', err)
+  //       })
+
+  //   }
 
 
        //Axios POST request to save feedback to the database
